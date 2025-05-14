@@ -17,3 +17,11 @@ body {
   color: var(--foreground-color);
   background-color: var(--background-color);
 }
+
+.Loading {
+  position: sticky;
+
+  margin-top: 0;
+  padding-top: 0;
+  z-index: 1600;
+}
