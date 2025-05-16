@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Typography } from "@mui/material";
+import React from 'react';
+import { Container, Typography } from '@mui/material';
 
 export default function NotFoundPage() {
   return (
@@ -9,7 +9,7 @@ export default function NotFoundPage() {
         variant="h5"
         component="div"
         color="text.primary"
-        sx={{ fontWeight: "bold" }}
+        sx={{ fontWeight: 'bold' }}
         align="center"
       >
         404 Not Found

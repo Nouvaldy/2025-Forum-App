@@ -25,4 +25,4 @@ function asyncReceiveUsersandThreads() {
   };
 }
 
-export { asyncReceiveUsersandThreads };
+export default asyncReceiveUsersandThreads;

@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Box, FormControl, TextField, Button } from "@mui/material";
-import useInput from "../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Box, FormControl, TextField, Button } from '@mui/material';
+import useInput from '../hooks/useInput';
 
 export default function LoginInput({ login }) {
-  const [email, onEmailChange] = useInput("");
-  const [password, onPasswordChange] = useInput("");
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
   return (
     <FormControl>
       <Box noValidate sx={{ mt: 1 }}>

@@ -2,47 +2,29 @@ import api from '../../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 const ActionType = {
-  FETCH_LEADERBOARDS_REQUEST: 'FETCH_LEADERBOARDS_REQUEST',
-  FETCH_LEADERBOARDS_SUCCESS: 'FETCH_LEADERBOARDS_SUCCESS',
-  FETCH_LEADERBOARDS_FAILURE: 'FETCH_LEADERBOARDS_FAILURE',
+  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
 };
 
-function fetchLeaderboardsRequest() {
+function receiveLeaderboards(leaderboards) {
   return {
-    type: ActionType.FETCH_LEADERBOARDS_REQUEST,
-  };
-}
-
-function fetchLeaderboardsSuccess(leaderboards) {
-  return {
-    type: ActionType.FETCH_LEADERBOARDS_SUCCESS,
+    type: ActionType.RECEIVE_LEADERBOARDS,
     payload: {
       leaderboards,
     },
   };
 }
 
-function fetchLeaderboardsFailure(error) {
-  return {
-    type: ActionType.FETCH_LEADERBOARDS_FAILURE,
-    payload: {
-      error,
-    },
-  };
-}
-
 // thunk function
-function asyncFetchLeaderboards() {
+function asyncReceiveLeaderboards() {
   return async (dispatch) => {
     dispatch(showLoading());
-    dispatch(fetchLeaderboardsRequest());
 
     try {
-      const response = await api.getLeaderboards();
-      const leaderboards = response.data.leaderboards;
-      dispatch(fetchLeaderboardsSuccess(leaderboards));
+      const leaderboards = await api.getLeaderboards();
+
+      dispatch(receiveLeaderboards(leaderboards));
     } catch (error) {
-      dispatch(fetchLeaderboardsFailure(error.message));
+      alert(error.message);
     }
 
     dispatch(hideLoading());
@@ -51,8 +33,6 @@ function asyncFetchLeaderboards() {
 
 export {
   ActionType,
-  fetchLeaderboardsRequest,
-  fetchLeaderboardsSuccess,
-  fetchLeaderboardsFailure,
-  asyncFetchLeaderboards,
+  receiveLeaderboards,
+  asyncReceiveLeaderboards,
 };

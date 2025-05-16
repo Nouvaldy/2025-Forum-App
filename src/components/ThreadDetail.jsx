@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import parse from "html-react-parser";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { userShape } from "./ThreadItem";
-import VoteButton from "./VoteButton";
-import postedAt from "../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { userShape } from './ThreadItem';
+import VoteButton from './VoteButton';
+import postedAt from '../utils';
 
 export default function ThreadDetail({
   id,
@@ -21,7 +21,7 @@ export default function ThreadDetail({
   downVotesBy,
   upVoteThreadDetail,
   downVoteThreadDetail,
-  neturalizeVoteThreadDetail,
+  neutralizeVoteThreadDetail,
   authUser,
 }) {
   return (
@@ -35,7 +35,7 @@ export default function ThreadDetail({
           variant="h5"
           component="div"
           color="text.primary"
-          sx={{ fontWeight: "bold" }}
+          sx={{ fontWeight: 'bold' }}
         >
           {title}
         </Typography>
@@ -47,9 +47,9 @@ export default function ThreadDetail({
         <VoteButton
           id={id}
           authUser={authUser}
-          upVote={upVoteThreadDetail}
-          downVote={downVoteThreadDetail}
-          neturalizeVote={neturalizeVoteThreadDetail}
+          upVote={() => upVoteThreadDetail(id)}
+          downVote={() => downVoteThreadDetail(id)}
+          neutralizeVote={() => neutralizeVoteThreadDetail(id)}
           upVotesBy={upVotesBy}
           downVotesBy={downVotesBy}
         />
@@ -95,5 +95,5 @@ ThreadDetail.propTypes = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   upVoteThreadDetail: PropTypes.func.isRequired,
   downVoteThreadDetail: PropTypes.func.isRequired,
-  neturalizeVoteThreadDetail: PropTypes.func.isRequired,
+  neutralizeVoteThreadDetail: PropTypes.func.isRequired,
 };

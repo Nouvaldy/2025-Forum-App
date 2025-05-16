@@ -19,5 +19,5 @@ export default function postedAt(date) {
   if (dateDifferentInSeconds > 0) {
     return `${Math.floor(dateDifferentInSeconds)} seconds ago`;
   }
-  return "Just now";
+  return 'Just now';
 }

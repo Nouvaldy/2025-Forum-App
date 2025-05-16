@@ -1,16 +1,16 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Grid, Box, CssBaseline, Typography, Container } from "@mui/material";
-import { asyncSetAuthUser } from "../states/authUser/action";
-import LoginInput from "../components/LoginInput";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Grid, Box, CssBaseline, Typography, Container } from '@mui/material';
+import { asyncSetAuthUser } from '../states/authUser/action';
+import LoginInput from '../components/LoginInput';
 
 export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onLogin = ({ email, password }) => {
     dispatch(asyncSetAuthUser({ email, password }));
-    navigate("/");
+    navigate('/');
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -18,9 +18,9 @@ export default function SignIn() {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <Typography component="h1" variant="h5" sx={{ mt: 9 }}>

@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FormControl, Typography, TextField, Button } from "@mui/material";
-import useInput from "../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FormControl, Typography, TextField, Button } from '@mui/material';
+import useInput from '../hooks/useInput';
 
 export default function CommentInput({ addComment }) {
-  const [comment, onCommentChange, setComment] = useInput("");
+  const [comment, onCommentChange, setComment] = useInput('');
   const onCommentSubmit = () => {
     addComment(comment);
-    setComment("");
+    setComment('');
   };
   return (
     <>
@@ -15,7 +15,7 @@ export default function CommentInput({ addComment }) {
         variant="body2"
         color="text.primary"
         component="span"
-        sx={{ ml: 2, fontWeight: "bold", fontSize: 14 }}
+        sx={{ ml: 2, fontWeight: 'bold', fontSize: 14 }}
       >
         Beri Komentar
       </Typography>

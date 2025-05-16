@@ -31,8 +31,8 @@ function asyncReceiveThreadDetail(threadId) {
     dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
     try {
-      const detailThread = await api.getThreadDetail(threadId);
-      dispatch(receiveThreadDetailActionCreator(detailThread));
+      const threadDetail = await api.getThreadDetail(threadId);
+      dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
       alert(error.message);
     }

@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import Typography from "@mui/material/Typography";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import Typography from '@mui/material/Typography';
 
 export default function VoteButton({
   id,
   upVote,
   downVote,
-  neturalizeVote,
+  neutralizeVote,
   upVotesBy,
   downVotesBy,
   authUser,
@@ -27,7 +27,7 @@ export default function VoteButton({
   };
 
   const onNeutralizeVoteClick = () => {
-    neturalizeVote(id);
+    neutralizeVote(id);
   };
   return (
     <>
@@ -35,13 +35,13 @@ export default function VoteButton({
         <ThumbUpAltIcon
           fontSize="small"
           onClick={onNeutralizeVoteClick}
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: 'pointer' }}
         />
       ) : (
         <ThumbUpOffAltIcon
           fontSize="small"
           onClick={onUpVoteClick}
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: 'pointer' }}
         />
       )}
 
@@ -57,13 +57,13 @@ export default function VoteButton({
         <ThumbDownAltIcon
           fontSize="small"
           onClick={onNeutralizeVoteClick}
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: 'pointer' }}
         />
       ) : (
         <ThumbDownOffAltIcon
           fontSize="small"
           onClick={onDownVoteClick}
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: 'pointer' }}
         />
       )}
       <Typography
@@ -82,7 +82,7 @@ VoteButton.propTypes = {
   id: PropTypes.string.isRequired,
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,
-  neturalizeVote: PropTypes.func.isRequired,
+  neutralizeVote: PropTypes.func.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,

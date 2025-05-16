@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FormControl, TextField, Button } from "@mui/material";
-import useInput from "../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FormControl, TextField, Button } from '@mui/material';
+import useInput from '../hooks/useInput';
 
 export default function ThreadInput({ addThread }) {
-  const [title, onTitleChange] = useInput("");
-  const [category, onCategoryChange] = useInput("");
-  const [body, onBodyChange] = useInput("");
+  const [title, onTitleChange] = useInput('');
+  const [category, onCategoryChange] = useInput('');
+  const [body, onBodyChange] = useInput('');
 
   return (
     <FormControl sx={{ ml: 2, mt: 1, mb: 5 }}>

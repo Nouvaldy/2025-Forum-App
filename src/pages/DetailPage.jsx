@@ -1,22 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Container, Card } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { Container, Card } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { asyncCreateComment } from '../states/comments/action';
 import {
   asyncReceiveThreadDetail,
-  asyncUpVoteThreadDetail,
-  asyncDownVoteThreadDetail,
-  asyncNeutralizeVoteThreadDetail,
-  asyncCreateComment,
-  asyncUpVoteComment,
-  asyncDownVoteComment,
-  asyncNeutralizeVoteComment,
-} from "../states/threadDetail/action";
-import ThreadDetail from "../components/ThreadDetail";
-import CommentInput from "../components/CommentInput";
-import CommentsList from "../components/CommentsList";
-import NotFoundPage from "./NotFoundPage";
+  asyncVoteThreadDetail,
+} from '../states/threadDetail/action';
+import { asyncVoteThread } from '../states/threads/action';
+import ThreadDetail from '../components/ThreadDetail';
+import CommentInput from '../components/CommentInput';
+import CommentsList from '../components/CommentsList';
+import NotFoundPage from './NotFoundPage';
 
 export default function DetailPage() {
   const { threadId } = useParams();
@@ -29,31 +25,64 @@ export default function DetailPage() {
   }, [threadId, dispatch]);
 
   const onUpVoteThreadDetail = () => {
-    dispatch(asyncUpVoteThreadDetail());
+    dispatch(
+      asyncVoteThread({
+        threadId,
+        voteType: 1,
+      })
+    );
   };
 
   const onDownVoteThreadDetail = () => {
-    dispatch(asyncDownVoteThreadDetail());
+    dispatch(
+      asyncVoteThread({
+        threadId,
+        voteType: -1,
+      })
+    );
   };
 
-  const onNeturalizeVoteThreadDetail = () => {
-    dispatch(asyncNeutralizeVoteThreadDetail());
+  const onNeutralizeVoteThreadDetail = () => {
+    dispatch(
+      asyncVoteThread({
+        threadId,
+        voteType: 0,
+      })
+    );
   };
 
   const onCommentSubmit = (content) => {
-    dispatch(asyncCreateComment({ content }));
+    dispatch(asyncCreateComment({ threadId, content }));
   };
 
   const onUpVoteComment = (id) => {
-    dispatch(asyncUpVoteComment(id));
+    dispatch(
+      asyncVoteThreadDetail({
+        threadId,
+        commentId: id,
+        voteType: 1,
+      })
+    );
   };
 
   const onDownVoteComment = (id) => {
-    dispatch(asyncDownVoteComment(id));
+    dispatch(
+      asyncVoteThreadDetail({
+        threadId,
+        commentId: id,
+        voteType: -1,
+      })
+    );
   };
 
-  const onNeturalizeVoteComment = (id) => {
-    dispatch(asyncNeutralizeVoteComment(id));
+  const onNeutralizeVoteComment = (id) => {
+    dispatch(
+      asyncVoteThreadDetail({
+        threadId,
+        commentId: id,
+        voteType: 0,
+      })
+    );
   };
 
   if (threadDetail === null) {
@@ -68,11 +97,11 @@ export default function DetailPage() {
           authUser={authUser.id}
           upVoteThreadDetail={onUpVoteThreadDetail}
           downVoteThreadDetail={onDownVoteThreadDetail}
-          neturalizeVoteThreadDetail={onNeturalizeVoteThreadDetail}
+          neutralizeVoteThreadDetail={onNeutralizeVoteThreadDetail}
         />
         <CommentInput addComment={onCommentSubmit} />
         <Typography
-          sx={{ fontSize: 18, ml: 2, fontWeight: "bold" }}
+          sx={{ fontSize: 18, ml: 2, fontWeight: 'bold' }}
           gutterBottom
         >
           Komentar({threadDetail.comments.length})
@@ -82,7 +111,7 @@ export default function DetailPage() {
           authUser={authUser.id}
           upVoteComment={onUpVoteComment}
           downVoteComment={onDownVoteComment}
-          neturalizeVoteComment={onNeturalizeVoteComment}
+          neutralizeVoteComment={onNeutralizeVoteComment}
         />
       </Card>
     </Container>

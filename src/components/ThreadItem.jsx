@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import parse from "html-react-parser";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CommentIcon from "@mui/icons-material/Comment";
-import VoteButton from "./VoteButton";
-import postedAt from "../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import parse from 'html-react-parser';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CommentIcon from '@mui/icons-material/Comment';
+import VoteButton from './VoteButton';
+import postedAt from '../utils';
 
 export default function ThreadItem({
   id,
@@ -21,7 +21,7 @@ export default function ThreadItem({
   totalComments,
   upVote,
   downVote,
-  neturalizeVote,
+  neutralizeVote,
   threadOwner,
   authUser,
 }) {
@@ -31,7 +31,7 @@ export default function ThreadItem({
   };
   return (
     <Card sx={{ mb: 3 }}>
-      <CardContent onClick={onThreadClick} sx={{ cursor: "pointer" }}>
+      <CardContent onClick={onThreadClick} sx={{ cursor: 'pointer' }}>
         <Typography sx={{ fontSize: 16 }} gutterBottom color="text.secondary">
           {category}
         </Typography>
@@ -40,7 +40,7 @@ export default function ThreadItem({
           variant="h5"
           component="div"
           color="text.primary"
-          sx={{ fontWeight: "bold" }}
+          sx={{ fontWeight: 'bold' }}
         >
           {title}
         </Typography>
@@ -54,7 +54,7 @@ export default function ThreadItem({
           authUser={authUser}
           upVote={upVote}
           downVote={downVote}
-          neturalizeVote={neturalizeVote}
+          neutralizeVote={neutralizeVote}
           upVotesBy={upVotesBy}
           downVotesBy={downVotesBy}
         />
@@ -112,7 +112,7 @@ ThreadItem.propTypes = {
   authUser: PropTypes.string.isRequired,
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,
-  neturalizeVote: PropTypes.func.isRequired,
+  neutralizeVote: PropTypes.func.isRequired,
 };
 
 export { threadItemShape, userShape };

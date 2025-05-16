@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import CommentItem, { commentShape } from "./CommentItem";
+import React from 'react';
+import PropTypes from 'prop-types';
+import CommentItem, { commentShape } from './CommentItem';
 
 export default function CommentsList({
   comments,
   authUser,
   upVoteComment,
   downVoteComment,
-  neturalizeVoteComment,
+  neutralizeVoteComment,
 }) {
   return (
     <>
@@ -18,7 +18,7 @@ export default function CommentsList({
           authUser={authUser}
           upVote={upVoteComment}
           downVote={downVoteComment}
-          neturalizeVote={neturalizeVoteComment}
+          neutralizeVote={neutralizeVoteComment}
         />
       ))}
     </>
@@ -30,5 +30,5 @@ CommentsList.propTypes = {
   authUser: PropTypes.string.isRequired,
   upVoteComment: PropTypes.func.isRequired,
   downVoteComment: PropTypes.func.isRequired,
-  neturalizeVoteComment: PropTypes.func.isRequired,
+  neutralizeVoteComment: PropTypes.func.isRequired,
 };

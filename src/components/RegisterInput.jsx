@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Button, TextField, FormControl, Box, Grid } from "@mui/material";
-import useInput from "../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button, TextField, FormControl, Box, Grid } from '@mui/material';
+import useInput from '../hooks/useInput';
 
 export default function RegisterInput({ register }) {
-  const [name, onNameChange] = useInput("");
-  const [email, onEmailChange] = useInput("");
-  const [password, onPasswordChange] = useInput("");
+  const [name, onNameChange] = useInput('');
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
   return (
     <FormControl>
       <Box noValidate sx={{ mt: 3 }}>

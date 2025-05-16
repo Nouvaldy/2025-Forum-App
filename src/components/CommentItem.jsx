@@ -1,16 +1,16 @@
-import React from "react";
-import parse from "html-react-parser";
-import PropTypes from "prop-types";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Grid";
-import { userShape } from "./ThreadItem";
-import VoteButton from "./VoteButton";
-import postedAt from "../utils";
+import React from 'react';
+import parse from 'html-react-parser';
+import PropTypes from 'prop-types';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import { userShape } from './ThreadItem';
+import VoteButton from './VoteButton';
+import postedAt from '../utils';
 
 export default function CommentItem({
   id,
@@ -21,7 +21,7 @@ export default function CommentItem({
   downVotesBy,
   upVote,
   downVote,
-  neturalizeVote,
+  neutralizeVote,
   authUser,
 }) {
   return (
@@ -39,7 +39,7 @@ export default function CommentItem({
                 variant="body2"
                 component="div"
                 color="text.primary"
-                sx={{ fontWeight: "bold" }}
+                sx={{ fontWeight: 'bold' }}
               >
                 {owner.name}
               </Typography>
@@ -61,7 +61,7 @@ export default function CommentItem({
           variant="body2"
           component="div"
           color="text.primary"
-          sx={{ fontWeight: "medium", mt: 1 }}
+          sx={{ fontWeight: 'medium', mt: 1 }}
         >
           {parse(content)}
         </Typography>
@@ -72,7 +72,7 @@ export default function CommentItem({
           authUser={authUser}
           upVote={upVote}
           downVote={downVote}
-          neturalizeVote={neturalizeVote}
+          neutralizeVote={neutralizeVote}
           upVotesBy={upVotesBy}
           downVotesBy={downVotesBy}
         />
@@ -95,7 +95,7 @@ CommentItem.propTypes = {
   ...commentShape,
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,
-  neturalizeVote: PropTypes.func.isRequired,
+  neutralizeVote: PropTypes.func.isRequired,
   authUser: PropTypes.string.isRequired,
 };
 export { commentShape };
