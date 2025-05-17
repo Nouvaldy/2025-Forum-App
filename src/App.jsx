@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import Navigation from "./components/Navigation";
-import RegisterPage from "./pages/RegisterPage";
-import { asynchPreloadProcess } from "./states/isPreload/action";
-import { asynchUnsetAuthUser } from "./states/authUser/action";
-import DetailPage from "./pages/DetailPage";
-import AddThreadPage from "./pages/AddThreadPage";
-import LeaderboardsPage from "./pages/LeaderboardsPage";
-import Loading from "./components/Loading";
-import NotFoundPage from "./pages/NotFoundPage";
+import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import Navigation from './components/Navigation';
+import RegisterPage from './pages/RegisterPage';
+import { asynchPreloadProcess } from './states/isPreload/action';
+import { asynchUnsetAuthUser } from './states/authUser/action';
+import DetailPage from './pages/DetailPage';
+import AddThreadPage from './pages/AddThreadPage';
+import LeaderboardsPage from './pages/LeaderboardsPage';
+import Loading from './components/Loading';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const { isPreload = false, authUser } = useSelector((states) => states);

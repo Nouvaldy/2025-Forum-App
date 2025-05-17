@@ -17,35 +17,34 @@ import NotFoundPage from './NotFoundPage';
 export default function DetailPage() {
   const { threadId } = useParams();
   const { threadDetail = null, authUser } = useSelector((states) => states);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(threadId));
-  }, [threadId, dispatch]);
+  }, [dispatch, threadId]);
 
-  const onUpVoteThreadDetail = () => {
+  const onUpVoteThreadDetail = (id) => {
     dispatch(
       asyncVoteThread({
-        threadId,
+        threadId: id,
         voteType: 1,
       })
     );
   };
 
-  const onDownVoteThreadDetail = () => {
+  const onDownVoteThreadDetail = (id) => {
     dispatch(
       asyncVoteThread({
-        threadId,
+        threadId: id,
         voteType: -1,
       })
     );
   };
 
-  const onNeutralizeVoteThreadDetail = () => {
+  const onNeutralizeVoteThreadDetail = (id) => {
     dispatch(
       asyncVoteThread({
-        threadId,
+        threadId: id,
         voteType: 0,
       })
     );
@@ -90,8 +89,8 @@ export default function DetailPage() {
   }
 
   return (
-    <Container sx={{ pb: 2 }}>
-      <Card>
+    <Container maxWidth="sm" sx={{ pb: 2, justifyItems: 'center' }}>
+      <Card sx={{ width: '100%', padding: 2 }}>
         <ThreadDetail
           {...threadDetail}
           authUser={authUser.id}
@@ -100,8 +99,10 @@ export default function DetailPage() {
           neutralizeVoteThreadDetail={onNeutralizeVoteThreadDetail}
         />
         <CommentInput addComment={onCommentSubmit} />
+      </Card>
+      <Card sx={{ width: '100%', padding: 2 }}>
         <Typography
-          sx={{ fontSize: 18, ml: 2, fontWeight: 'bold' }}
+          sx={{ fontSize: 18, mt: 2, ml: 2, fontWeight: 'bold' }}
           gutterBottom
         >
           Komentar({threadDetail.comments.length})

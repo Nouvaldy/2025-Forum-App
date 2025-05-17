@@ -27,7 +27,7 @@ function addThreadActionCreator(thread) {
 
 function voteThreadActionCreator({ threadId, userId, voteType }) {
   return {
-    type: 'VOTE_THREAD',
+    type: ActionType.VOTE_THREAD,
     payload: { threadId, userId, voteType },
   };
 }

@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
+import { Card } from '@mui/material';
 import { userShape } from './ThreadItem';
 import VoteButton from './VoteButton';
 import postedAt from '../utils';
@@ -25,7 +26,7 @@ export default function CommentItem({
   authUser,
 }) {
   return (
-    <>
+    <Card sx={{ width: '100%', mb: 3 }}>
       <CardContent sx={{ pb: 0 }}>
         <Grid container spacing={2}>
           <Grid item xs={10}>
@@ -78,7 +79,7 @@ export default function CommentItem({
         />
       </CardActions>
       <Divider />
-    </>
+    </Card>
   );
 }
 

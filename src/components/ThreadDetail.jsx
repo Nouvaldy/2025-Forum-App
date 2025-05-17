@@ -26,7 +26,7 @@ export default function ThreadDetail({
 }) {
   return (
     <>
-      <CardContent sx={{ pb: 0 }}>
+      <CardContent>
         <Typography sx={{ fontSize: 16 }} gutterBottom color="text.secondary">
           {category}
         </Typography>
@@ -64,7 +64,7 @@ export default function ThreadDetail({
             <Avatar
               alt="Avatar Icon"
               src={owner.avatar}
-              sx={{ width: 20, height: 20, ml: 0.5, mr: 0.5 }}
+              sx={{ width: 20, height: 20, margin: 0.5 }}
             />
             {owner.name}
           </Stack>
@@ -74,7 +74,6 @@ export default function ThreadDetail({
           variant="body2"
           color="text.primary"
           component="span"
-          sx={{ ml: 0.5 }}
         >
           {postedAt(createdAt)}
         </Typography>

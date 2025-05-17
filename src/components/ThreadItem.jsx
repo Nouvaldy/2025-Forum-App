@@ -30,7 +30,7 @@ export default function ThreadItem({
     navigate(`/thread/${id}`);
   };
   return (
-    <Card sx={{ mb: 3 }}>
+    <Card sx={{ width: '100%', mb: 3 }}>
       <CardContent onClick={onThreadClick} sx={{ cursor: 'pointer' }}>
         <Typography sx={{ fontSize: 16 }} gutterBottom color="text.secondary">
           {category}

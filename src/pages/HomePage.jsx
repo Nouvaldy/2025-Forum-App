@@ -9,12 +9,12 @@ import { asyncVoteThread } from '../states/threads/action';
 
 function HomePage() {
   const [filter, setFilter] = useState('');
-  const dispatch = useDispatch();
   const {
     threads = [],
     users = [],
     authUser,
   } = useSelector((states) => states);
+  const dispatch = useDispatch();
 
   const categories = new Set(threads.map((thread) => thread.category));
 
@@ -40,7 +40,7 @@ function HomePage() {
     );
   };
 
-  const onNeturalizeVoteThread = (id) => {
+  const onNeutralizeVoteThread = (id) => {
     dispatch(
       asyncVoteThread({
         threadId: id,
@@ -56,7 +56,7 @@ function HomePage() {
   }));
 
   return (
-    <Container>
+    <Container maxWidth="sm" sx={{ justifyItems:'center' }}>
       {Array.from(categories).map((category) => {
         if (filter === category) {
           return (
@@ -90,7 +90,7 @@ function HomePage() {
         }
         upVote={onUpVoteThread}
         downVote={onDownVoteThread}
-        neturalizeVote={onNeturalizeVoteThread}
+        neutralizeVote={onNeutralizeVoteThread}
       />
       <Link to="/new">
         <Fab

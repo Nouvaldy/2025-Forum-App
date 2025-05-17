@@ -18,10 +18,10 @@ function clearThreadDetailActionCreator() {
   return { type: ActionType.CLEAR_THREAD_DETAIL };
 }
 
-function voteThreadDetailActionCreator({ userId, voteType }) {
+function voteThreadDetailActionCreator({ threadId, userId, voteType }) {
   return {
     type: ActionType.VOTE_THREAD_DETAIL,
-    payload: { userId, voteType },
+    payload: { threadId, userId, voteType },
   };
 }
 
@@ -43,24 +43,29 @@ function asyncReceiveThreadDetail(threadId) {
 function asyncVoteThreadDetail({ threadId, commentId, voteType }) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
+
     const { authUser } = getState();
     dispatch(
       voteThreadDetailActionCreator({
+        threadId,
         userId: authUser.id,
         voteType,
       })
-    );
+    ); //optimistik
+
     try {
       await api.voteComment({ threadId, commentId, voteType });
     } catch (error) {
       alert(error.message);
       dispatch(
         voteThreadDetailActionCreator({
+          threadId,
           userId: authUser.id,
           voteType,
         })
-      );
+      ); //optimistik
     }
+
     dispatch(hideLoading());
   };
 }

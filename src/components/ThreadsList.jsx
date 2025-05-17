@@ -6,7 +6,7 @@ export default function ThreadsList({
   threads,
   upVote,
   downVote,
-  neturalizeVote,
+  neutralizeVote,
 }) {
   return (
     <>
@@ -16,7 +16,7 @@ export default function ThreadsList({
           {...thread}
           upVote={upVote}
           downVote={downVote}
-          neturalizeVote={neturalizeVote}
+          neutralizeVote={neutralizeVote}
         />
       ))}
     </>
@@ -27,5 +27,5 @@ ThreadsList.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadItemShape)).isRequired,
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,
-  neturalizeVote: PropTypes.func.isRequired,
+  neutralizeVote: PropTypes.func.isRequired,
 };

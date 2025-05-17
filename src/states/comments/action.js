@@ -2,20 +2,12 @@ import api from '../../utils/api';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 const ActionType = {
-  CREATE_COMMENT_REQUEST: 'CREATE_COMMENT_REQUEST',
-  CREATE_COMMENT_SUCCESS: 'CREATE_COMMENT_SUCCESS',
+  CREATE_COMMENT: 'CREATE_COMMENT',
 };
 
-function createCommentRequestActionCreator({ threadId, content }) {
+function createCommentActionCreator({ threadId, comment }) {
   return {
-    type: ActionType.CREATE_COMMENT_REQUEST,
-    payload: { threadId, content },
-  };
-}
-
-function createCommentSuccessActionCreator({ threadId, comment }) {
-  return {
-    type: ActionType.CREATE_COMMENT_SUCCESS,
+    type: ActionType.CREATE_COMMENT,
     payload: { threadId, comment },
   };
 }
@@ -24,11 +16,11 @@ function createCommentSuccessActionCreator({ threadId, comment }) {
 function asyncCreateComment({ threadId, content }) {
   return async (dispatch) => {
     dispatch(showLoading());
-    dispatch(createCommentRequestActionCreator({ threadId, content }));
 
     try {
       const comment = await api.createComment({ threadId, content });
-      dispatch(createCommentSuccessActionCreator({ threadId, comment }));
+
+      dispatch(createCommentActionCreator({ threadId, comment }));
     } catch (error) {
       alert(error.message);
     }
@@ -39,7 +31,6 @@ function asyncCreateComment({ threadId, content }) {
 
 export {
   ActionType,
-  createCommentRequestActionCreator,
-  createCommentSuccessActionCreator,
+  createCommentActionCreator,
   asyncCreateComment,
 };

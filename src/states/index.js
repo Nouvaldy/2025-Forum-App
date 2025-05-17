@@ -6,10 +6,12 @@ import leaderboardsReducer from './leaderboards/reducer';
 import threadDetailReducer from './threadDetail/reducer';
 import threadsReducer from './threads/reducer';
 import usersReducer from './users/reducer';
+import commentsReducer from './comments/reducer';
 
 const store = configureStore({
   reducer: {
     authUser: authUserReducer,
+    comments: commentsReducer,
     isPreload: isPreloadReducer,
     leaderboards: leaderboardsReducer,
     threadDetail: threadDetailReducer,

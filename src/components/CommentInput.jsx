@@ -24,7 +24,7 @@ export default function CommentInput({ addComment }) {
           id="outlined-multiline-flexible"
           multiline
           maxRows={4}
-          sx={{ width: 1120 }}
+          sx={{ width: 600 }}
           value={comment}
           onChange={onCommentChange}
         />
