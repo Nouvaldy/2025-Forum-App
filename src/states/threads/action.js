@@ -67,6 +67,8 @@ function asyncVoteThread({ threadId, voteType }) {
 
     try {
       await api.voteThread({ threadId, voteType });
+      const threads = await api.getAllThreads();
+      dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
       alert(error.message);
       dispatch(

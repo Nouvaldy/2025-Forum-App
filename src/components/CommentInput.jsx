@@ -19,12 +19,12 @@ export default function CommentInput({ addComment }) {
       >
         Beri Komentar
       </Typography>
-      <FormControl sx={{ ml: 2, mt: 1, mb: 5 }}>
+      <FormControl sx={{ ml: 2, mt: 1, mb: 5, width: '100%', pr:3 }}>
         <TextField
           id="outlined-multiline-flexible"
           multiline
           maxRows={4}
-          sx={{ width: 600 }}
+          sx={{ width: '100%' }}
           value={comment}
           onChange={onCommentChange}
         />

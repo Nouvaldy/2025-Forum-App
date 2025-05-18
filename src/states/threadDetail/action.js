@@ -55,6 +55,8 @@ function asyncVoteThreadDetail({ threadId, commentId, voteType }) {
 
     try {
       await api.voteComment({ threadId, commentId, voteType });
+      const threadDetail = await api.getThreadDetail(threadId);
+      dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
       alert(error.message);
       dispatch(
