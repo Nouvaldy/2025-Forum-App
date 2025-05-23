@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Fab, Container, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { Link } from 'react-router-dom';
+
 import ThreadsList from '../components/ThreadsList';
+
 import asyncReceiveUsersandThreads from '../states/shared/action';
 import { asyncVoteThread } from '../states/threads/action';
 

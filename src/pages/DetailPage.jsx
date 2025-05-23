@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Container, Card } from '@mui/material';
 import Typography from '@mui/material/Typography';
+
 import { asyncCreateComment } from '../states/comments/action';
 import {
   asyncReceiveThreadDetail,
   asyncVoteThreadDetail,
 } from '../states/threadDetail/action';
 import { asyncVoteThread } from '../states/threads/action';
+
 import ThreadDetail from '../components/ThreadDetail';
 import CommentInput from '../components/CommentInput';
 import CommentsList from '../components/CommentsList';
@@ -21,7 +23,7 @@ export default function DetailPage() {
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(threadId));
-  }, [dispatch, threadId]);
+  }, [threadId, dispatch]);
 
   const onUpVoteThreadDetail = (id) => {
     dispatch(
@@ -29,7 +31,9 @@ export default function DetailPage() {
         threadId: id,
         voteType: 1,
       })
-    );
+    ).then(() => {
+      dispatch(asyncReceiveThreadDetail(id));
+    });
   };
 
   const onDownVoteThreadDetail = (id) => {
@@ -38,7 +42,9 @@ export default function DetailPage() {
         threadId: id,
         voteType: -1,
       })
-    );
+    ).then(() => {
+      dispatch(asyncReceiveThreadDetail(id));
+    });
   };
 
   const onNeutralizeVoteThreadDetail = (id) => {
@@ -47,7 +53,9 @@ export default function DetailPage() {
         threadId: id,
         voteType: 0,
       })
-    );
+    ).then(() => {
+      dispatch(asyncReceiveThreadDetail(id));
+    });
   };
 
   const onCommentSubmit = (content) => {
